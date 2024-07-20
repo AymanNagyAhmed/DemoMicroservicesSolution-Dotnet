@@ -6,14 +6,19 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-/* Database Context Dependency Injection */
-var dbHost = "(localdb)\\local";
-var dbName = "customer_ms_db";
-var dbUser = "sa";
-var dbPassword = "@12345Admin";
-var dbConnectionString = $"Data Source={dbHost};Initial Catalog={dbName};User ID={dbUser};Password={dbPassword}";
-// $"Data Source={dbHost};Initial Catalog={dbName};Integrated Security=True";
-// $"server={dbHost};port={dbPort};database={dbName};user={dbUser};password={dbPassword}";
+/* Local Database Context Dependency Injection */
+// var dbHost = "(localdb)\\local";
+// var dbName = "customer_ms_db";
+// var dbUser = "sa";
+// var dbPassword = "@12345Admin";
+
+/* Docker Database Context Dependency Injection */
+string dbHost = Environment.GetEnvironmentVariable("DB_HOST") ?? "customerdb";
+string dbName = Environment.GetEnvironmentVariable("DB_NAME") ?? "customer_db";
+string dbUser = Environment.GetEnvironmentVariable("DB_USER") ?? "sa";
+string dbPassword = Environment.GetEnvironmentVariable("DB_SA_PASSWORD") ?? "123456789";
+var dbConnectionString = $"Data Source={dbHost};Initial Catalog={dbName};User Id={dbUser};password={dbPassword};Encrypt=True;TrustServerCertificate=True";
+// $"Data Source=(localdb)\local;Initial Catalog=customer_db;User Id=sa;password=@12345Admin;Encrypt=True;TrustServerCertificate=True";
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(dbConnectionString));
 /* ===================== */
 
