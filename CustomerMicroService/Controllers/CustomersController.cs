@@ -33,13 +33,6 @@ namespace CustomerMicroService.Controllers
         [HttpPost]
         public async Task<IActionResult> PostCreateAsync(Customer customer)
         {
-            var existingCustomer = await _customerDbContext.Customers
-                .FirstOrDefaultAsync(c => c.Email == customer.Email);
-            if (existingCustomer != null)
-            {
-                return BadRequest("Email already in use.");
-            }
-
             await _customerDbContext.Customers.AddAsync(customer);
             await _customerDbContext.SaveChangesAsync();
 

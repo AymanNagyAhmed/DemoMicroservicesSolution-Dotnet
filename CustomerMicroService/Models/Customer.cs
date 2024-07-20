@@ -4,7 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CustomerMicroService.Models
 {
-    [Table("customers", Schema = "dbo")] // Corrected syntax for specifying schema
+    [Table("customers", Schema = "dbo")]
+    [Index("Email",IsUnique = true)]
+    [Index("Mobile", IsUnique = true)]
     public class Customer
     {
         [Key]
@@ -18,25 +20,13 @@ namespace CustomerMicroService.Models
 
         [Column("mobile")]
         [Required]
-        [Phone] // Corrected attribute casing
+        [Phone]
         public string Mobile { get; set; }
         [Column("email")]
         [Required]
         [EmailAddress]
         [MaxLength(50)]
         [MinLength(3)]
-        // [Index(IsUnique = true)]
         public string Email { get; set; }
-    }
-
-    // Extension method to configure the unique index for Email
-    public static class ModelBuilderExtensions
-    {
-        public static void ConfigureCustomerEntity(this ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Customer>()
-                .HasIndex(c => c.Email)
-                .IsUnique();
-        }
     }
 }
