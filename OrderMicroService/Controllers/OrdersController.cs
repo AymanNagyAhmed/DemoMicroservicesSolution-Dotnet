@@ -13,9 +13,15 @@ namespace OrderMicroService.Controllers
         private readonly IMongoCollection<Order> _orderCollection;
         public OrdersController()
         {
-            var dbHost = "localhost";
-            var dbPort = "27017";
-            var dbName = "order_ms_db";
+            // var dbHost = "localhost";
+            // var dbPort = "27017";
+            // var dbName = "order_ms_db";
+
+            /* Docker Database Context Dependency Injection */
+            string dbHost = Environment.GetEnvironmentVariable("DB_HOST") ?? "localhost";
+            string dbName = Environment.GetEnvironmentVariable("DB_NAME") ?? "order_ms_db";
+            string dbPort = Environment.GetEnvironmentVariable("DB_PORT") ?? "27017";
+
             string connectionString = $"mongodb://{dbHost}:{dbPort}/{dbName}";
 
             var mongoUrl = MongoUrl.Create(connectionString);
@@ -57,12 +63,12 @@ namespace OrderMicroService.Controllers
             var filterDefinition = Builders<Order>.Filter.Eq(o => o.Id, Id);
             var updateDefinition = Builders<Order>.Update
                 .Set(o => o.OrderDetails, updatedOrderDetails.OrderDetails);
-        
+
             var updatedOrder = await _orderCollection.FindOneAndUpdateAsync(
                 filterDefinition,
                 updateDefinition,
                 new FindOneAndUpdateOptions<Order> { ReturnDocument = ReturnDocument.After });
-        
+
             if (updatedOrder == null)
             {
                 return NotFound($"Order with Id {Id} not found.");

@@ -5,6 +5,7 @@ networks:
     driver: bridge
 
 services:
+################ service one - customer microservice ################
   customerdb:
     container_name: customer-db
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -32,8 +33,7 @@ services:
       - DB_NAME=customer_db
       - DB_SA_PASSWORD=password_test123
 
-
-
+################ service two - product microservice ################
   productdb:
     container_name: product-db
     image: mysql:latest
@@ -60,7 +60,29 @@ services:
       - DB_PORT=3306
       - DB_USER=root
       - DB_ROOT_PASSWORD=password_MySql23
-
     
+################ service three - order microservice ################
+  orderdb:
+    container_name: order-db
+    image: mongo:latest
+    ports:
+      - 18003:27017
+    networks:
+      - backend
+    
+  ordermicroservice:
+    container_name: order-ms
+    image: ${DOCKER_REGISTRY-}ordermicroservice
+    build:
+      context: .
+      dockerfile: OrderMicroService/Dockerfile
+    networks:
+      - backend
+    ports:
+      - 8003:8080
+    environment:
+      - DB_HOST=orderdb
+      - DB_NAME=order_ms_db
+      - DB_PORT=27017
 
-
+################################################################################
