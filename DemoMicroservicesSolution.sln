@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerMicroService", "Cus
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C1794487-5093-4632-B672-8C1AE5759C51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductMicroService", "ProductMicroService\ProductMicroService.csproj", "{72520B27-5CA3-4EDE-B4E0-D4ABFDFB1EEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductMicroService", "ProductMicroService\ProductMicroService.csproj", "{72520B27-5CA3-4EDE-B4E0-D4ABFDFB1EEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderMicroService", "OrderMicroService\OrderMicroService.csproj", "{0CCD17CC-67FD-45F6-8365-2B4019F75185}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{72520B27-5CA3-4EDE-B4E0-D4ABFDFB1EEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72520B27-5CA3-4EDE-B4E0-D4ABFDFB1EEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72520B27-5CA3-4EDE-B4E0-D4ABFDFB1EEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CCD17CC-67FD-45F6-8365-2B4019F75185}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CCD17CC-67FD-45F6-8365-2B4019F75185}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CCD17CC-67FD-45F6-8365-2B4019F75185}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CCD17CC-67FD-45F6-8365-2B4019F75185}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
