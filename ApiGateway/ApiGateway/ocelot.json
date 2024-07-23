@@ -1,5 +1,19 @@
 ﻿{
     "Routes": [
+        // Auth Microservice
+        {
+            "UpstreamPathTemplate": "/api/Accounts",
+            "UpstreamHttpMethod": [ "Post" ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "authmicroservice",
+                    "Port": 8080
+                }
+            ],
+            "DownstreamPathTemplate": "/api/Accounts"
+        },
+
         // Customer Microservice
         {
             "UpstreamPathTemplate": "/api/Customers",

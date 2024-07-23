@@ -7,7 +7,7 @@ networks:
     driver: bridge
 
 services:
-################ service one - customer microservice ################
+  ################ service one - customer microservice ################
   customerdb:
     container_name: customer-db
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -27,15 +27,15 @@ services:
       dockerfile: CustomerMicroService/Dockerfile
     networks:
       - backend
-    # ports:
-    #   - 8001:8080
+    ports:
+      - 8002:8080
     environment:
       - DB_HOST=customerdb
       - DB_USER=sa
       - DB_NAME=customer_db
       - DB_SA_PASSWORD=password_test123
 
-################ service two - product microservice ################
+  ################ service two - product microservice ################
   productdb:
     container_name: product-db
     image: mysql:latest
@@ -54,16 +54,16 @@ services:
       dockerfile: ProductMicroService/Dockerfile
     networks:
       - backend
-    # ports:
-    #   - 8002:8080
+    ports:
+      - 8003:8080
     environment:
       - DB_HOST=productdb
       - DB_NAME=product_db
       - DB_PORT=3306
       - DB_USER=root
       - DB_ROOT_PASSWORD=password_MySql23
-    
-################ service three - order microservice ################
+
+  ################ service three - order microservice ################
   orderdb:
     container_name: order-db
     image: mongo:latest
@@ -71,7 +71,7 @@ services:
       - 18003:27017
     networks:
       - backend
-    
+
   ordermicroservice:
     container_name: order-ms
     image: ${DOCKER_REGISTRY-}ordermicroservice
@@ -80,15 +80,14 @@ services:
       dockerfile: OrderMicroService/Dockerfile
     networks:
       - backend
-    # ports:
-    #   - 8003:8080
+    ports:
+      - 8004:8080
     environment:
       - DB_HOST=orderdb
       - DB_NAME=order_ms_db
       - DB_PORT=27017
 
-
-################ ApiGateway ################
+  ################ ApiGateway ################
   apigateway:
     container_name: api-gateway
     image: ${DOCKER_REGISTRY-}apigateway
@@ -100,3 +99,15 @@ services:
     networks:
       - backend
       - frontend
+
+  ################ Service Four - Authentication microservicee ################
+  authmicroservice:
+    container_name: auth-ms
+    image: ${DOCKER_REGISTRY-}authmicroservice
+    build:
+      context: .
+      dockerfile: AuthMicroService/Dockerfile
+    ports:
+      - 8001:8080
+    networks:
+      - backend

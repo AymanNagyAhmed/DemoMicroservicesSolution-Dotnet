@@ -7,7 +7,8 @@
         "customermicroservice": "StartDebugging",
         "productmicroservice": "StartDebugging",
         "ordermicroservice": "StartDebugging",
-        "apigateway": "StartDebugging"
+        "apigateway": "StartDebugging",
+        "authmicroservice": "StartDebugging"
       }
     }
   }
