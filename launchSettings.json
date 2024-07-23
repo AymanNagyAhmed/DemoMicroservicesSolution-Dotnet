@@ -6,7 +6,8 @@
       "serviceActions": {
         "customermicroservice": "StartDebugging",
         "productmicroservice": "StartDebugging",
-        "ordermicroservice": "StartDebugging"
+        "ordermicroservice": "StartDebugging",
+        "apigateway": "StartDebugging"
       }
     }
   }

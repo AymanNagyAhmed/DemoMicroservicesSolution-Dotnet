@@ -1,0 +1,84 @@
+﻿{
+    "Routes": [
+        // Customer Microservice
+        {
+            "UpstreamPathTemplate": "/api/Customers",
+            "UpstreamHttpMethod": [ "Get", "Post" ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "customermicroservice",
+                    "Port": 8080
+                }
+            ],
+            "DownstreamPathTemplate": "/api/Customers"
+        },
+        {
+            "UpstreamPathTemplate": "/api/customers/{id}",
+            "UpstreamHttpMethod": [ "Get", "Put", "Delete" ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "customermicroservice",
+                    "Port": 8080
+                }
+            ],
+            "DownstreamPathTemplate": "/api/Customers/{id}"
+        },
+
+        //Product Microservice
+        {
+            "UpstreamPathTemplate": "/api/Products",
+            "UpstreamHttpMethod": [ "Get", "Post" ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "productmicroservice",
+                    "Port": 8080
+                }
+            ],
+            "DownstreamPathTemplate": "/api/Products"
+        },
+        {
+            "UpstreamPathTemplate": "/api/Products/{id}",
+            "UpstreamHttpMethod": [ "Get", "Put", "Delete" ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "productmicroservice",
+                    "Port": 8080
+                }
+            ],
+            "DownstreamPathTemplate": "/api/Products/{id}"
+        },
+
+        // orders Microservice
+        {
+            "UpstreamPathTemplate": "/api/Orders",
+            "UpstreamHttpMethod": [ "Get", "Post" ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "ordermicroservice",
+                    "Port": 8080
+                }
+            ],
+            "DownstreamPathTemplate": "/api/Orders"
+        },
+        {
+            "UpstreamPathTemplate": "/api/Orders/{Id}",
+            "UpstreamHttpMethod": [ "Get", "Put", "Delete" ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "ordermicroservice",
+                    "Port": 8080
+                }
+            ],
+            "DownstreamPathTemplate": "/api/Orders/{Id}"
+        }
+    ],
+    "GlobalConfiguration": {
+        "BaseUrl": "http://localhost:8000"
+    }
+}
