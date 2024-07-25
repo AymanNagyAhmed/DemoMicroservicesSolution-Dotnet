@@ -1,6 +1,5 @@
 ﻿using JwtAuthenticationManager;
 using JwtAuthenticationManager.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthMicroService.Controllers
