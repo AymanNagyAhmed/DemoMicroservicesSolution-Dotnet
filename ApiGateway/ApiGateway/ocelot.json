@@ -51,7 +51,14 @@
                     "Port": 8080
                 }
             ],
-            "DownstreamPathTemplate": "/api/Products"
+            "DownstreamPathTemplate": "/api/Products",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer",
+                "AllowedScopes": []
+            },
+            "RouteClaimsRequirement": {
+                "Role": "Admin"
+            }
         },
         {
             "UpstreamPathTemplate": "/api/Products/{id}",

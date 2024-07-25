@@ -17,9 +17,9 @@ namespace JwtAuthenticationManager
             _userAccountList = new List<UserAccount>
                 {
                     new UserAccount { UserName = "admin", Email = "admin@gmail.com", Password = "admin", Role = "Admin"},
-                    new UserAccount { UserName = "user", Email = "user@gmail.com", Password = "Password", Role = "User"},
-                    new UserAccount { UserName = "user2", Email = "test2@gmail.com", Password = "Password", Role = "User"},
-                    new UserAccount { UserName = "test3", Email = "test3@gmail.com", Password = "Password", Role = "User"},
+                    new UserAccount { UserName = "user", Email = "user@gmail.com", Password = "user", Role = "User"},
+                    new UserAccount { UserName = "user2", Email = "test2@gmail.com", Password = "12345", Role = "User"},
+                    new UserAccount { UserName = "test3", Email = "test3@gmail.com", Password = "12345", Role = "User"},
                 };
         }
 
@@ -41,7 +41,7 @@ namespace JwtAuthenticationManager
             var claimsIdentity = new ClaimsIdentity(new List<Claim>
                 {
                      new Claim(JwtRegisteredClaimNames.Name, authRequest.UserName),
-                     new Claim(ClaimTypes.Role, userAccount.Role)
+                     new Claim("Role", userAccount.Role)
                 });
 
             var signingCredentials = new SigningCredentials(
