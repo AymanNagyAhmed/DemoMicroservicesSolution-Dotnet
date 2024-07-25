@@ -84,7 +84,14 @@
                     "Port": 8080
                 }
             ],
-            "DownstreamPathTemplate": "/api/Orders"
+            "DownstreamPathTemplate": "/api/Orders",
+            "RateLimitOptions": {
+                "ClientWhitelist": [],
+                "EnableRateLimiting": true,
+                "Period": "2s",
+                "PeriodTimespan": 2,
+                "Limit": 1
+            }
         },
         {
             "UpstreamPathTemplate": "/api/Orders/{Id}",
@@ -100,6 +107,10 @@
         }
     ],
     "GlobalConfiguration": {
-        "BaseUrl": "http://localhost:8000"
+        "BaseUrl": "http://localhost:8000",
+        "RateLimitOptions": {
+            "QuotaExceededMessage": "Too Many Requests",
+            "HttpStatusCode": 429
+        }
     }
 }
