@@ -1,0 +1,497 @@
+{
+	"info": {
+		"_postman_id": "c19d05aa-b5cf-46e1-a83e-02a0ab25468c",
+		"name": "DemoMicroservicesSolution",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10532359",
+		"_collection_link": "https://dark-resonance-2759-1.postman.co/workspace/Team-Workspace~ee472c6a-ab99-4e36-885b-b7490b84d71e/collection/10532359-c19d05aa-b5cf-46e1-a83e-02a0ab25468c?action=share&source=collection_link&creator=10532359"
+	},
+	"item": [
+		{
+			"name": "CustomerMicroService",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE3MjE4OTI2MTAsImV4cCI6MTcyMTg5NjIxMCwiaWF0IjoxNzIxODkyNjEwfQ.-A22BXteEEbil0_l0leRcLVDcd6xpX_9FAdfj1Sm59Y",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DOCKER_GATEWAY_URL}}/api/customers",
+							"host": [
+								"{{DOCKER_GATEWAY_URL}}"
+							],
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOCKER_GATEWAY_URL}}/api/customers/1",
+							"host": [
+								"{{DOCKER_GATEWAY_URL}}"
+							],
+							"path": [
+								"api",
+								"customers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE3MjE4ODkxOTYsImV4cCI6MTcyMTg5Mjc5NiwiaWF0IjoxNzIxODg5MTk2fQ.6QR2F8Exg-3z-86OrWO50ZNcI2eyJ3kVPkIFMIh45Wo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"ayman\",\r\n    \"mobile\":\"01122334452\",\r\n    \"email\":\"test2@test.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOCKER_GATEWAY_URL}}/api/customers",
+							"host": [
+								"{{DOCKER_GATEWAY_URL}}"
+							],
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE3MjE4ODkxOTYsImV4cCI6MTcyMTg5Mjc5NiwiaWF0IjoxNzIxODg5MTk2fQ.6QR2F8Exg-3z-86OrWO50ZNcI2eyJ3kVPkIFMIh45Wo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"ayman\",\r\n    \"mobile\":\"01122334455\",\r\n    \"email\":\"test5@test.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOCKER_GATEWAY_URL}}/api/customers/1",
+							"host": [
+								"{{DOCKER_GATEWAY_URL}}"
+							],
+							"path": [
+								"api",
+								"customers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"ayman\",\r\n    \"mobile\":\"01122334455\",\r\n    \"email\":\"test22@test.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOCKER_GATEWAY_URL}}/api/customers/2",
+							"host": [
+								"{{DOCKER_GATEWAY_URL}}"
+							],
+							"path": [
+								"api",
+								"customers",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ProductMicroService",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJSb2xlIjoiQWRtaW4iLCJuYmYiOjE3MjE4OTM4NzksImV4cCI6MTcyMTg5NzQ3OSwiaWF0IjoxNzIxODkzODc5fQ.MhLgPxS1feUzPCdyqy4hsagIW7HLl4Kar8Trgm56wfE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DOCKER_GATEWAY_URL}}/api/products",
+							"host": [
+								"{{DOCKER_GATEWAY_URL}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOCKER_GATEWAY_URL}}/api/products/1",
+							"host": [
+								"{{DOCKER_GATEWAY_URL}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJSb2xlIjoiQWRtaW4iLCJuYmYiOjE3MjE4OTM4NzksImV4cCI6MTcyMTg5NzQ3OSwiaWF0IjoxNzIxODkzODc5fQ.MhLgPxS1feUzPCdyqy4hsagIW7HLl4Kar8Trgm56wfE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\":\"test2\",\r\n    \"Code\":\"test3\",\r\n    \"Price\":123\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOCKER_GATEWAY_URL}}/api/products",
+							"host": [
+								"{{DOCKER_GATEWAY_URL}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\":\"test1\",\r\n    \"Code\":\"test22\",\r\n    \"Price\":123\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOCKER_GATEWAY_URL}}/api/products/1",
+							"host": [
+								"{{DOCKER_GATEWAY_URL}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"ayman\",\r\n    \"mobile\":\"01122334455\",\r\n    \"email\":\"test22@test.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOCKER_GATEWAY_URL}}/api/products/1",
+							"host": [
+								"{{DOCKER_GATEWAY_URL}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OrderMicroService",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOCKER_GATEWAY_URL}}/api/orders",
+							"host": [
+								"{{DOCKER_GATEWAY_URL}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOCKER_GATEWAY_URL}}/api/orders/669d5884074f98dcde936b19",
+							"host": [
+								"{{DOCKER_GATEWAY_URL}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"669d5884074f98dcde936b19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Id\":\"\",\r\n  \"customerId\": 1,\r\n  \"orderOn\": \"2024-07-21T19:01:29.091Z\",\r\n  \"orderDetails\": [\r\n    {\r\n      \"productId\": 1,\r\n      \"quantity\": 44,\r\n      \"unitPrice\": 400\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOCKER_GATEWAY_URL}}/api/orders",
+							"host": [
+								"{{DOCKER_GATEWAY_URL}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\":\"\",\r\n  \"customerId\": 4,\r\n  \"orderOn\": \"2024-07-21T19:01:29.091Z\",\r\n  \"orderDetails\": [\r\n    {\r\n      \"productId\": 4,\r\n      \"quantity\": 544,\r\n      \"unitPrice\": 5400\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOCKER_GATEWAY_URL}}/api/orders/669d5884074f98dcde936b19",
+							"host": [
+								"{{DOCKER_GATEWAY_URL}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"669d5884074f98dcde936b19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"ayman\",\r\n    \"mobile\":\"01122334455\",\r\n    \"email\":\"test22@test.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOCKER_GATEWAY_URL}}/api/orders/669d5884074f98dcde936b19",
+							"host": [
+								"{{DOCKER_GATEWAY_URL}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"669d5884074f98dcde936b19"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AuthMictoService",
+			"item": [
+				{
+					"name": "Authenticate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userName\": \"admin\",\r\n  \"password\": \"admin\"\r\n    // \"userName\": \"user\",\r\n    // \"password\": \"user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOCKER_GATEWAY_URL}}/api/accounts",
+							"host": [
+								"{{DOCKER_GATEWAY_URL}}"
+							],
+							"path": [
+								"api",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "DOCKER_GATEWAY_URL",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "DOCKER_AUTH_URL",
+			"value": "http://localhost:8001",
+			"type": "string"
+		},
+		{
+			"key": "DOCKER_CUSTOMER_URL",
+			"value": "http://localhost:8002",
+			"type": "string"
+		},
+		{
+			"key": "DOCKER_PRODUCT_URL",
+			"value": "http://localhost:8003",
+			"type": "string"
+		},
+		{
+			"key": "DOCKER_ORDER_URL",
+			"value": "http://localhost:8004",
+			"type": "string"
+		}
+	]
+}
