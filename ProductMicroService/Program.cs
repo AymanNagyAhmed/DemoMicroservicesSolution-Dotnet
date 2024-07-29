@@ -6,12 +6,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-/* Local Database Context Dependency Injection */
-var dbHost = "localhost";
-var dbName = "product_ms_db";
-var dbPort = "3306";
-var dbUser = "admin";
-var dbPassword = "@12345Admin";
 
 /* Docker Database Context Dependency Injection */
 // string dbHost = Environment.GetEnvironmentVariable("DB_HOST") ?? "productdb";
@@ -20,7 +14,9 @@ var dbPassword = "@12345Admin";
 // string dbUser = Environment.GetEnvironmentVariable("DB_USER") ?? "root";
 // string dbPassword = Environment.GetEnvironmentVariable("DB_ROOT_PASSWORD") ?? "123456789";
 
-var connectionString = $"server={dbHost};port={dbPort};database={dbName};user={dbUser};password={dbPassword}";
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")??
+"server=localhost;port=3306;database=product_ms_db;user=admin;password=@12345Admin";
+// $"server={dbHost};port={dbPort};database={dbName};user={dbUser};password={dbPassword}";
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySQL(connectionString));
 
 /* =============================================================== */
