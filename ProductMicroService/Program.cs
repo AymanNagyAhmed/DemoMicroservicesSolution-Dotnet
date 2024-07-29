@@ -14,7 +14,7 @@ builder.Services.AddControllers();
 // string dbUser = Environment.GetEnvironmentVariable("DB_USER") ?? "root";
 // string dbPassword = Environment.GetEnvironmentVariable("DB_ROOT_PASSWORD") ?? "123456789";
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")??
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
 "server=localhost;port=3306;database=product_ms_db;user=admin;password=@12345Admin";
 // $"server={dbHost};port={dbPort};database={dbName};user={dbUser};password={dbPassword}";
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySQL(connectionString));
@@ -24,6 +24,8 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseMySQL(connecti
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddAutoMapper(typeof(Program));
 // add cors header
 builder.Services.AddCors();
 
